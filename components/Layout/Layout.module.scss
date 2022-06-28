@@ -1,0 +1,18 @@
+.wrapper {
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+}
+
+.main {
+  position: relative;
+  max-width: 70vw;
+  /*     padding: 2em; */
+  margin: 0 auto;
+  /*   animation: fadeEffect 5s; /*fading effect*/
+}
+
+.footer {
+  margin-top: auto;
+}
