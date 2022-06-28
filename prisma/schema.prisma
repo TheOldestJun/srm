@@ -1,0 +1,87 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Role {
+    id String @id @default(uuid())
+    title String
+    user User[]
+}
+
+model Category {
+    id String @id @default(uuid())
+    title String
+    stuff Stuff[]
+}
+
+model Stage {
+    id String @id @default(uuid())
+    title String @unique
+    executorId String
+    executor User @relation(fields: [executorId], references: [id])
+    issues Issue[]
+}
+
+model Stuff {
+    id String @id @default(uuid())
+    title String
+    description String
+    ceoControl Boolean @default(false)
+    categoryId String
+    createdById String
+    category Category @relation(fields: [categoryId], references: [id])
+    createdBy User @relation(fields: [createdById],references: [id])
+    issue Issue[]
+}
+
+model User {
+    id String @id @default(uuid())
+    email String @unique
+    password String
+    name String
+    roleId String
+    stuffCreated Stuff[]
+    selfStage Stage[]
+    role Role @relation(fields: [roleId], references: [id])
+    issuesAuthorised Issue[]
+    issues Issue[] @relation("ApplicantName")
+    executor Issue[] @relation("ExecutorName")
+}
+
+model Issue {
+    id String @id @default(uuid())
+    title String @unique
+    applicantId String
+    executorId String?
+    stuffId String
+    quantity Int @default(1)
+    isDone Boolean @default(false)
+    stageId String
+    dateCreated DateTime @db.Date
+    dateUpdated DateTime?
+    autorisedById String?
+    stage Stage @relation(fields: [stageId],references: [id])
+    autorisedBy User? @relation(fields: [autorisedById],references: [id])
+    stuff Stuff @relation(fields: [stuffId], references: [id])
+    applicant User @relation("ApplicantName", fields: [applicantId],references: [id])
+    executor User? @relation("ExecutorName",fields: [executorId],references: [id])
+}
+
+model Log{
+    id String @id @default(uuid())
+    title String @unique
+    applicantId String
+    executorId String
+    stuffId String
+    quantity Int
+    dateCreated DateTime @db.Date
+    dateClosed DateTime @db.Date
+}
