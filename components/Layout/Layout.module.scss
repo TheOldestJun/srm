@@ -1,5 +1,7 @@
+@import "../../constants/constants.scss";
+
 .wrapper {
-  overflow: hidden;
+  overflow: auto;
   display: grid;
   grid-template-rows: auto 1fr auto;
   min-height: 100vh;
@@ -8,9 +10,8 @@
 .main {
   position: relative;
   max-width: 70vw;
-  /*     padding: 2em; */
   margin: 0 auto;
-  /*   animation: fadeEffect 5s; /*fading effect*/
+  color: $font-color;
 }
 
 .footer {

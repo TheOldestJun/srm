@@ -1,14 +1,12 @@
 import styles from "./Footer.module.scss";
 
+import { logo } from "../../constants/constants";
+
 export default (props) => {
   return (
     <>
       <div className={styles.main}>
-        <img
-          src='/img/logo.svg'
-          alt='Department Logo'
-          className={styles.logo}
-        />
+        <img src={logo} alt='Department Logo' className={styles.logo} />
         <div>
           <h5>
             Система взаимодействия между заявителями и исполнителями в структуре

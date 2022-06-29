@@ -1,0 +1,14 @@
+@import "../../constants/constants.scss";
+
+.button {
+  background-color: $foreground-light;
+  font-size: medium;
+  width: 100%;
+  border: 1px solid $foreground;
+  border-radius: 4px;
+  cursor: pointer;
+  color: $font-color;
+  &:hover {
+    background-color: $foreground;
+  }
+}
