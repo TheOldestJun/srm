@@ -20,19 +20,24 @@ const userSlice = createSlice({
       state.name = "";
       state.role = "";
     },
-    setEmail(state, payload) {
+    setGlobalEmail(state, payload) {
       state.email = payload;
     },
-    setName(state, payload) {
+    setGlobalName(state, payload) {
       state.name = payload;
     },
-    setRole(state, payload) {
+    setGlobalRole(state, payload) {
       state.role = payload;
     },
   },
 });
 
-export const { setLogIn, setLogOut, setEmail, setName, setRole } =
-  userSlice.actions;
+export const {
+  setLogIn,
+  setLogOut,
+  setGlobalEmail,
+  setGlobalName,
+  setGlobalRole,
+} = userSlice.actions;
 
 export default userSlice.reducer;

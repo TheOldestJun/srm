@@ -1,13 +1,7 @@
 import styles from "./DataList.module.scss";
 import StyledInput from "../StyledInput/StyledInput";
-
-//prototyping new method for string to capitalize first letter in component output
-Object.defineProperty(String.prototype, "capitalize", {
-  value: function () {
-    return this.charAt(0).toUpperCase() + this.slice(1);
-  },
-  enumerable: false,
-});
+import { v4 as uuid } from "uuid";
+import { useState } from "react";
 
 /* Component for custom dropdown input
 uses UUIDv4 for generating unique id for new fields and
@@ -19,8 +13,12 @@ Example:
         onUserSelect={userSelect} - userSelect can operate with id and value
       />
  */
-import { v4 as uuid } from "uuid";
-import { useState } from "react";
+
+//method for string to capitalize first letter in component output
+//TODO: need refactoring after, due to future or maybe english translation to capitalize all words.
+const capitalize = (str) => {
+  return (str && str[0].toUpperCase() + str.slice(1).toLowerCase()) || "";
+};
 
 export default (props) => {
   const [filteredOptions, setFilteredOptions] = useState([]);
@@ -56,7 +54,7 @@ export default (props) => {
   };
 
   const handleClick = (option) => {
-    props.onUserSelect(option.id, option.value.capitalize());
+    props.onUserSelect(option.id, capitalize(option.value));
     setTextValue(option.value);
     setId(option.id);
     hideList();
