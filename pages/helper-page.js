@@ -12,11 +12,18 @@ export default () => {
     alert(res.data.message);
   };
 
-  const stagesAdd = async()=>{
-    const res = await axios.post('/api/db', {
-        command: 'Add stages'
-    })
-  }
+  const stagesAdd = async () => {
+    const res = await axios.post("/api/db", {
+      command: "Add stages",
+    });
+  };
+
+  const testerAdd = async () => {
+    const res = await axios.post("/api/db", {
+      command: "Add user",
+    });
+    alert(res.data.message);
+  };
   return (
     <>
       <div
@@ -29,6 +36,7 @@ export default () => {
       >
         <button onClick={rolesAdd}>Roles Add</button>
         <button onClick={stagesAdd}>Stages Add</button>
+        <button onClick={testerAdd}>Add Random User</button>
       </div>
     </>
   );

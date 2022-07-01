@@ -1,5 +1,6 @@
 import styles from "../styles/Login.module.scss";
 import { useState } from "react";
+import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import {
   setLogIn,
@@ -15,6 +16,7 @@ import prisma from "../prisma";
 import axios from "axios";
 
 export default ({ roles }) => {
+  const { push } = useRouter();
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -37,6 +39,7 @@ export default ({ roles }) => {
       dispatch(setGlobalName(name));
       dispatch(setGlobalRole(currentUserRole));
       dispatch(setGlobalRoleId(roleId));
+      push("/users/[id]", `/users/${roleId}`);
     }
   };
   return (
