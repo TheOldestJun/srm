@@ -5,6 +5,7 @@ let initialState = {
   email: "",
   name: "",
   role: "",
+  roleId: "",
 };
 
 const userSlice = createSlice({
@@ -29,6 +30,9 @@ const userSlice = createSlice({
     setGlobalRole(state, payload) {
       state.role = payload;
     },
+    setGlobalRoleId(state, payload) {
+      state.roleId = payload;
+    },
   },
 });
 
@@ -38,6 +42,7 @@ export const {
   setGlobalEmail,
   setGlobalName,
   setGlobalRole,
+  setGlobalRoleId,
 } = userSlice.actions;
 
 export default userSlice.reducer;

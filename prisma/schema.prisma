@@ -26,7 +26,7 @@ model Stage {
     id String @id @default(uuid())
     title String @unique
     executorId String
-    executor User @relation(fields: [executorId], references: [id])
+    executor User? @relation(fields: [executorId], references: [id])
     issues Issue[]
 }
 

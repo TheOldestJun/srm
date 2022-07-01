@@ -6,6 +6,7 @@ import {
   setGlobalEmail,
   setGlobalName,
   setGlobalRole,
+  setGlobalRoleId,
 } from "../store/userSlice";
 
 import StyledInput from "../components/StyledInput/StyledInput";
@@ -35,6 +36,7 @@ export default ({ roles }) => {
       dispatch(setGlobalEmail(email));
       dispatch(setGlobalName(name));
       dispatch(setGlobalRole(currentUserRole));
+      dispatch(setGlobalRoleId(roleId));
     }
   };
   return (
